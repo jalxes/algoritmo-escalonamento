@@ -14,23 +14,46 @@ list: [
 ]
 
 def FCFS():
-    for value in list:
-        self.run(value)
+    actualList = list.first
+    volta = 0;
+    while list:
+        volta++
+        print "volta " + volta
+        self.run(actualList)
+
 def SJNP():
-    for value in list:
-        if minor is not
-        self.run(value)
+    # TODO: implementar tempo de chegada
+    actualList = list.first
+    volta = 0;
+    while list:
+        volta++
+        print "volta " + volta
+        self.run(actualList)
+
 def SJP():
-    for value in list:
-        self.run(value)
+    actualList = list.first
+    volta = 0;
+    while list:
+        volta++
+        print "volta " + volta
+        self.run(actualList)
+
 def RR():
-    for value in list:
-        self.run(value)
+    actualList = list.first
+    counter = 0;
+    input
+    while list:
+        volta++
+        couter++
+        if couter >= input:
+            actualList = list.next;
+        print "volta " + volta
+        self.run(actualList)
 
-def run(value):
-    pass
+
+def run(actualList):
+    if actualList.size == 0:
+        self.list.remove(actualList);
+        actualList = self.list.next()
+    actualList.size--
 def main():
-
-
-
-    
