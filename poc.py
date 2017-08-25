@@ -4,71 +4,65 @@ class Process:
         self.label = label
         self.size = size
 
-list: [
-    {
-        "startAt": "2",
-        "label": "2",
-        "size": "2",
-    },
-    {
-        "startAt": "1",
-        "label": "1",
-        "size": "1",
-    },
-    {
-        "startAt": "3",
-        "label": "3",
-        "size": "3",
-    }
-    def list():
-        pass
-]
-execList: []
+if __name__ == "__main__":
+    x1 = Process(1,1,1)
+    x2 = Process(2,2,2)
+    x3 = Process(3,3,3)
 
+li = [x1, x2, x3]
+execList = []
+currentLi = [x1, x2, x3]
 def FCFS():
-    actualList = self.first(list)
+    currentLi = first(li)
     volta = 0;
-    while list:
+    while True:
+        if not len(li):
+            break
         volta += 1
-        print ("volta " + volta)
-        self.run(actualList)
+        print("volta ", volta)
+        run(currentLi)
 
 def SJNP():
     # TODO: implementar tempo de chegada
-    actualList = self.first(list)
+    currentLi = first(li)
     volta = 0;
-    while list:
+    while li:
         volta += 1
-        print( "volta " + volta)
-        self.run(actualList)
+        print("volta ", volta)
+        run(currentLi)
 
 def SJP():
-    actualList = self.first(list)
+    currentLi = first(li)
     volta = 0;
-    while list:
+    while li:
         volta += 1
-        print( "volta " + volta)
-        self.run(actualList)
+        print("volta ", volta)
+        run(currentLi)
 
 def RR():
-    actualList = self.first(list)
+    currentLi = first(li)
     counter = 0;
     input
-    while list:
+    while li:
         volta += 1
         couter += 1
         if couter >= input:
-            actualList = list.next
+            currentLi = next(li)
             couter = 0
-        print( "volta " + volta)
-        self.run(actualList)
-def first(list):
-    pass
-def run(actualList):
-    if actualList.size == 0:
-        self.list.remove(actualList);
-        actualList = self.next(list)
-    actualList.size-=1
+        print("volta ", volta)
+        run(currentLi)
+
+def first(li):
+    return x1
+def next(li):
+    return x1
+
+def run(item):
+    if not item.size == 0:
+        li.remove(item);
+        item = next(li)
+    item.size-=1
+
 def main():
     FCFS()
     SJNP()
