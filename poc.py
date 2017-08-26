@@ -3,75 +3,79 @@ class Process:
         self.start = start
         self.label = label
         self.size = size
+currentLi = Process()
 
-list: [
-    {
-        "startAt": "2",
-        "label": "2",
-        "size": "2",
-    },
-    {
-        "startAt": "1",
-        "label": "1",
-        "size": "1",
-    },
-    {
-        "startAt": "3",
-        "label": "3",
-        "size": "3",
-    }
-    def list():
-        pass
-]
-execList: []
+def fixture():
+    li = [Process(num,num,num) for num in range(3)]
+    execLi = []
+    currentLi = Process()
 
 def FCFS():
-    actualList = self.first(list)
     volta = 0;
-    while list:
+    while True:
+        load(volta)
+        if not len(execLi):
+            break
         volta += 1
-        print ("volta " + volta)
-        self.run(actualList)
+        print("volta ", volta)
+        run(currentLi)
+#
+# def SJNP():
+#     # TODO: implementar tempo de chegada
+#     currentLi = first(li)
+#     volta = 0;
+#     while li:
+#         volta += 1
+#         print("volta ", volta)
+#         run(currentLi)
+#
+# def SJP():
+#     currentLi = first(li)
+#     volta = 0;
+#     while li:
+#         volta += 1
+#         print("volta ", volta)
+#         run(currentLi)
+#
+# def RR():
+#     currentLi = first(li)
+#     counter = 0;
+#     input
+#     while li:
+#         volta += 1
+#         couter += 1
+#         if couter >= input:
+#             currentLi = next(li)
+#             couter = 0
+#         print("volta ", volta)
+#         run(currentLi)
 
-def SJNP():
-    # TODO: implementar tempo de chegada
-    actualList = self.first(list)
-    volta = 0;
-    while list:
-        volta += 1
-        print( "volta " + volta)
-        self.run(actualList)
+def first():
+    back = li[0]
+    return back
 
-def SJP():
-    actualList = self.first(list)
-    volta = 0;
-    while list:
-        volta += 1
-        print( "volta " + volta)
-        self.run(actualList)
+def load(i):
+    if li[i]:
+        execLi.append(li[i])
 
-def RR():
-    actualList = self.first(list)
-    counter = 0;
-    input
-    while list:
-        volta += 1
-        couter += 1
-        if couter >= input:
-            actualList = list.next
-            couter = 0
-        print( "volta " + volta)
-        self.run(actualList)
-def first(list):
-    pass
-def run(actualList):
-    if actualList.size == 0:
-        self.list.remove(actualList);
-        actualList = self.next(list)
-    actualList.size-=1
+def run(item):
+    if item.size == 0:
+        execLi.remove(item);
+        item = next(execLi)
+    item.size-=1
+
 def main():
-    FCFS()
-    SJNP()
-    SJP()
-    RR()
+    fixture()
+    volta = 0;
+    while True:
+        load(volta)
+        if not len(execLi):
+            break
+        volta += 1
+        print("volta ", volta)
+        runFCFS(currentLi)
+
+    # SJNP()
+    # SJP()
+    # RR()
 main()
