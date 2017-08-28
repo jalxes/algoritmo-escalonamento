@@ -23,10 +23,9 @@ def clear():
     global total_time
     global atual
     x0 = Process(0, 0, 3)
-    x1 = Process(1, 1, 1)
-    x2 = Process(2, 2, 9)
-    x3 = Process(3, 3, 5)
-    li = [x0, x1, x2, x3]
+    x1 = Process(1, 1, 9)
+    x2 = Process(2, 2, 1)
+    li = [x0, x1, x2]
 
     atual = None
     exec_li = []
