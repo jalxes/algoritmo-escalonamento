@@ -13,7 +13,7 @@ li = []
 exec_li = []
 volta = 0
 total_time = 0
-
+rr = 3
 
 def clear():
 
@@ -22,16 +22,19 @@ def clear():
     global volta
     global total_time
     global atual
-    x0 = Process(0, 0, 3)
-    x1 = Process(1, 1, 9)
-    x2 = Process(2, 2, 1)
-    li = [x0, x1, x2]
+    global rr
+    li = [
+        Process(0, 0, 3),
+        Process(1, 1, 9),
+        Process(2, 2, 1),
+        Process(3, 3, 5)
+    ]
 
     atual = None
     exec_li = []
     volta = 0
     total_time = len(li)
-
+    rr = 3
 
 def load(i):
     if len(li) <= i:
@@ -43,11 +46,13 @@ def load(i):
 
 
 def defAtual(modo):
+    global rr
     if not 'atual' in globals():
         global atual
     if not atual in exec_li:
         if len(exec_li):
             atual = exec_li[0]
+            rr = 3
     if (modo == 'FCFS'):
         return
     if (modo == 'SJNP'):
@@ -64,7 +69,17 @@ def defAtual(modo):
             if minor.size > value.size:
                 minor = value
         atual = minor
-
+    if(modo == "RR"):
+        rr -= 1
+        if rr <= 0:
+            rr = 3
+            if len(exec_li) > 1:
+                index = exec_li.index(atual)
+                print(index)
+                print(len(exec_li))
+                if index >= len(exec_li)-1:
+                    index = -1
+                atual = exec_li[index + 1]
 # def FCFS():
 # def SJNP():
 # def SJP():
@@ -108,4 +123,4 @@ def main(modo):
 main('FCFS')
 main('SJNP')
 main('SJP')
-# main('RR')
+main('RR')
