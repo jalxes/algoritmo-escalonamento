@@ -25,10 +25,11 @@ def clear():
     global atual
     global rr
     li = [
-        Process(0, 0, 3),
-        Process(1, 1, 9),
-        Process(2, 2, 1),
-        Process(3, 3, 5)
+        Process(0, "P1", 8),
+        Process(2, "P2", 5),
+        Process(4, "P3", 4),
+        Process(6, "P4", 2),
+        Process(7, "P5", 7)
     ]
 
     atual = None
