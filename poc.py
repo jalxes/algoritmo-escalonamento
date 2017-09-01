@@ -75,7 +75,13 @@ def defAtual(modo):
         if rr <= 0:
             rr = 3
             if len(exec_li) > 1:
-                atual = exec_li[exec_li.index(atual) + 1]
+                if atual in exec_li:
+                    index = exec_li.index(atual)
+                atual = exec_li[index]
+                if index + 1 == len(exec_li):
+                    atual = exec_li[0]
+                else:
+                    atual = exec_li[index + 1]
         return
 
 # def FCFS():
