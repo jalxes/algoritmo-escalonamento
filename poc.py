@@ -24,10 +24,10 @@ def clear():
     global total_time
     global atual
     li = [
-        Process(0, 0, 3),
-        Process(1, 1, 2),
+        Process(0, 0, 5),
+        Process(1, 1, 3),
         Process(2, 2, 9),
-        Process(3, 3, 5),
+        Process(3, 3, 2),
     ]
 
     atual = None
@@ -52,6 +52,7 @@ def defAtual(modo):
         global atual
     if not atual in exec_li:
         if len(exec_li):
+            rr = 3
             atual = exec_li[0]
     if (modo == 'FCFS'):
         return
@@ -116,6 +117,7 @@ def main(modo):
                 total_time -= 1
                 exec_li.remove(atual)
                 if len(exec_li):
+                    rr = 3
                     atual = exec_li[0]
                     atual.available = True
         # print("total_time ", total_time)
