@@ -1,73 +1,136 @@
+from random import randint
+
+
 class Process:
     def __init__(self, start, label, size):
         self.start = start
         self.label = label
         self.size = size
+        self.available = True
 
 
-li = [Process(num,num,num) for num in range(3)]
-execList = []
-currentLi = []
+li = []
+exec_li = []
+volta = 0
+total_time = 0
+rr = 3
 
-def FCFS():
-    currentLi = first(li)
-    volta = 0;
-    while True:
-        load(volta)
-        if not len(exec):
-            break
-        volta += 1
-        print("volta ", volta)
-        run(currentLi)
-#
+
+def clear():
+
+    global li
+    global exec_li
+    global volta
+    global total_time
+    global atual
+    global rr
+    li = [
+        Process(0, 0, 3),
+        Process(1, 1, 9),
+        Process(2, 2, 1),
+        Process(3, 3, 5)
+    ]
+
+    atual = None
+    exec_li = []
+    volta = 0
+    total_time = len(li)
+    rr = 3
+
+
+def load(i):
+    if len(li) <= i:
+        return
+    for value in li:
+        if value.start == i & value.available:
+            exec_li.append(li[i])
+            li[i].available = False
+
+
+def defAtual(modo):
+    global rr
+    if not 'atual' in globals():
+        global atual
+    if not atual in exec_li:
+        if len(exec_li):
+            rr = 3
+            atual = exec_li[0]
+            rr = 3
+    if (modo == 'FCFS'):
+        return
+    if (modo == 'SJNP'):
+        if atual.available:
+            atual.available = False
+            minor = atual
+            for value in exec_li:
+                if minor.size > value.size:
+                    minor = value
+            atual = minor
+            return
+    if (modo == 'SJP'):
+        minor = atual
+        for value in exec_li:
+            if minor.size > value.size:
+                minor = value
+        atual = minor
+        return
+    if (modo == 'RR'):
+        if rr <= 0:
+            rr = 3
+            if len(exec_li) > 1:
+                if atual in exec_li:
+                    index = exec_li.index(atual)
+                atual = exec_li[index]
+                if index + 1 == len(exec_li):
+                    atual = exec_li[0]
+                else:
+                    atual = exec_li[index + 1]
+        return
+
+# def FCFS():
 # def SJNP():
-#     # TODO: implementar tempo de chegada
-#     currentLi = first(li)
-#     volta = 0;
-#     while li:
-#         volta += 1
-#         print("volta ", volta)
-#         run(currentLi)
-#
 # def SJP():
-#     currentLi = first(li)
-#     volta = 0;
-#     while li:
-#         volta += 1
-#         print("volta ", volta)
-#         run(currentLi)
-#
 # def RR():
-#     currentLi = first(li)
-#     counter = 0;
-#     input
-#     while li:
-#         volta += 1
-#         couter += 1
-#         if couter >= input:
-#             currentLi = next(li)
-#             couter = 0
-#         print("volta ", volta)
-#         run(currentLi)
-#
-# def first(li):
-#     return x1
-# def next(li):
-#     return x1
-#
-# def load(i):
-#     if li[i]:
-#         execLi.append(li[i])
-#
-# def run(item):
-#     if not item.size == 0:
-#         li.remove(item);
-#         item = next(li)
-#     item.size-=1
-#
-def main():
-    FCFS()
-    # SJNP()
-    # SJP()
-    # RR()
-main()
+
+
+def main(modo):
+    global i
+    global exec_li
+    global volta
+    global total_time
+    global atual
+    global rr
+    clear()
+
+    print('modo: ', modo)
+    while True:
+        if volta > 100:
+            break
+        if total_time <= 0:
+            break
+        # print("volta ", volta)
+        load(volta)
+        defAtual(modo)
+        if atual:
+            print("li ", atual.label, atual.size)
+            atual.size -= 1
+            rr -= 1
+            if atual.size < 0:
+                total_time -= 1
+                exec_li.remove(atual)
+                if len(exec_li):
+                    rr = 3
+                    atual = exec_li[0]
+                    atual.available = True
+        # print("total_time ", total_time)
+        # print("volta ", volta)
+        # print("atual ", atual.label)
+        # print("size ", atual.size)
+        # print("------")
+        volta += 1
+
+
+main('FCFS')
+main('SJNP')
+main('SJP')
+main('RR')
