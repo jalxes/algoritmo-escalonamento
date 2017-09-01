@@ -23,10 +23,12 @@ def clear():
     global volta
     global total_time
     global atual
-    x0 = Process(0, 0, 3)
-    x1 = Process(1, 1, 9)
-    x2 = Process(2, 2, 1)
-    li = [x0, x1, x2]
+    li = [
+        Process(0, 0, 3),
+        Process(1, 1, 2),
+        Process(2, 2, 9),
+        Process(3, 3, 5),
+    ]
 
     atual = None
     exec_li = []
