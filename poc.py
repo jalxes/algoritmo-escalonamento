@@ -23,11 +23,12 @@ def clear():
     global volta
     global total_time
     global atual
+    global rr
     li = [
-        Process(0, 0, 5),
-        Process(1, 1, 3),
-        Process(2, 2, 9),
-        Process(3, 3, 2),
+        Process(0, 0, 3),
+        Process(1, 1, 9),
+        Process(2, 2, 1),
+        Process(3, 3, 5)
     ]
 
     atual = None
@@ -54,6 +55,7 @@ def defAtual(modo):
         if len(exec_li):
             rr = 3
             atual = exec_li[0]
+            rr = 3
     if (modo == 'FCFS'):
         return
     if (modo == 'SJNP'):
